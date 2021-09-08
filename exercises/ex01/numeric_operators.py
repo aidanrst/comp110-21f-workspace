@@ -1,6 +1,6 @@
 """Exercise 01- Numeric Operators."""
 
-__author__ = 730433261
+__author__ = "730433261"
 
 left: int = int(input("Left-hand side: "))
 right: int = int(input("Right-hand side: "))
