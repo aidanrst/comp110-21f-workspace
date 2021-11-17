@@ -93,3 +93,83 @@ def count(xs: list[str]) -> dict[str, int]:
             count_dict[value] = 1
 
     return count_dict
+
+
+def count_sort(xs: dict[str, int]) -> dict[str, int]:
+    """Sorts the key:value pairs in a dictionary from smallest key to largest key."""
+    sort_dict: dict[str, int] = {}
+    sort_1_dict: list[str] = sorted(xs)
+    for item in sort_1_dict:
+        if item in xs:
+            sort_dict[item] = xs[item]
+    return sort_dict
+
+
+def average_str(xs: list[str]) -> float:
+    """Takes the average value from a list of integers represented as strings."""
+    """Note: Function Unused in pj01."""
+    int_list: list[int] = []
+    points: int = 0
+    for value in xs:
+        value = int(value)
+        int_list.append(value)
+        points += 1
+    total: int = sum(int_list)
+    print(total)
+    print(points)
+    average: float = total / points
+    return average
+
+
+def int_select(xs: dict[str, list[str]]) -> dict[str, list[int]]:
+    """Converts a list of integers represented as strings in a dictionary to a list of integers."""
+    int_dict: dict[str, list[int]] = {}
+    int_value: list[int] = []
+    for key in xs:
+        int_value = []
+        for value in xs[key]:
+            value = int(value)
+            int_value.append(value)
+        int_dict[key] = list(int_value)
+    return int_dict
+
+
+def row_based(xs: dict[str, list[int]]) -> list[dict[str, int]]:
+    """Turns a column-oriented table to a row-oriented table."""
+    row_list: list[dict[str, int]] = []
+    rows: dict[str, int] = {}
+    i: int = 0
+    for key in xs:
+        for key2 in xs:
+            if key2 != key:
+                while i < len(xs[key]):
+                    rows[key] = xs[key][i]
+                    rows[key2] = xs[key2][i]
+                    row_list.append(dict(rows))
+                    i += 1
+    return row_list
+
+
+def filt_high(ys: list[dict[str, int]]) -> list[int]:
+    """Filters a row-oriented table by column values over a certain integer."""
+    f_h_list: list[int] = []
+    for item in ys:
+        if (item["own_notes"]) > 4:
+            f_h_list.append(item["ls_effective"])
+    return f_h_list
+
+
+def filt_low(zs: list[dict[str, int]]) -> list[int]:
+    """Filters a row-oriented table by column values of and below a certain integer."""
+    f_l_list: list[int] = []
+    for item in zs:
+        if (item["own_notes"]) <= 4:
+            f_l_list.append(item["ls_effective"])
+    return f_l_list
+
+
+def average_int(zs: list[int]) -> float:
+    """Takes the average of a list of integers."""
+    total: int = sum(zs)
+    average: float = total / len(zs)
+    return(average)
